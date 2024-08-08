@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: #acacac;
+}
+
+body {
+  min-width: 320px;
+  min-height: 98vh;
+}
+
+.slick-slide img {
+  display: inline-block;
+}
+
+.slick-prev, .slick-next {
+  z-index: 1;
+}
+
+.slick-dots li button:before {
+  color: white;
+}
