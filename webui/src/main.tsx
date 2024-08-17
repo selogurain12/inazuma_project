@@ -15,6 +15,11 @@ import { EquipeFormulaire } from './components/equipes/equipe-form.tsx';
 import { AllEquipes } from './components/equipes/list-all-equipes.tsx';
 import { EquipeDetails } from './components/equipes/equipe-detail.tsx';
 import { EquipeEdit } from './components/equipes/equipe-edit.tsx';
+import HomeEpisode from './components/episodes/home-episode.tsx';
+import { EpisodeFormulaire } from './components/episodes/episode-form.tsx';
+import { AllEpisodes } from './components/episodes/list-all-episodes.tsx';
+import { EpisodeDetails } from './components/episodes/episode-detail.tsx';
+import { EpisodeEdit } from './components/episodes/episode-edit.tsx';
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <StrictMode>
@@ -32,6 +37,11 @@ import { EquipeEdit } from './components/equipes/equipe-edit.tsx';
             <Route element={<AllEquipes />} path="/equipes/listEquipes" />
             <Route element={<EquipeDetails />} path="/equipes/listEquipes/:id" />
             <Route element={<EquipeEdit />} path="/equipes/editEquipes/:id" />
+            <Route element={<HomeEpisode />} path="/episodes" />
+            <Route element={<EpisodeFormulaire />} path="/episodes/createEpisode" />
+            <Route element={<AllEpisodes />} path="/episodes/listEpisodes" />
+            <Route element={<EpisodeDetails />} path="/episodes/listEpisodes/:id" />
+            <Route element={<EpisodeEdit />} path="/episodes/editEpisodes/:id" />
           </Routes>
         </BrowserRouter>
       </main>

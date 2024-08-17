@@ -11,6 +11,7 @@ import { Personnage } from 'src/personnages/entities/personnage.entity';
 import { Supertactique } from 'src/supertactiques/entities/supertactique.entity';
 import { Supertechnique } from 'src/supertechniques/entities/supertechnique.entity';
 import { Image } from 'src/images/entities/image.entity';
+import { Serie } from 'src/series/entities/series.entity';
 
 export class CreateEpisodeDto {
   @IsString()
@@ -50,7 +51,7 @@ export class CreateEpisodeDto {
   video: string;
 
   @IsNotEmpty()
-  serieId: string;
+  serie: Serie;
 
   @IsOptional()
   equipes: Equipe[];

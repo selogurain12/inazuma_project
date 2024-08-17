@@ -385,7 +385,7 @@ export function EquipeEdit() {
                                 nom_original_personnage: '', 
                                 note: '', 
                                 position_personnage: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un joueur</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -414,7 +414,7 @@ export function EquipeEdit() {
                                 nom_original_personnage: '', 
                                 note: '', 
                                 position_personnage: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un manageur</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -441,7 +441,7 @@ export function EquipeEdit() {
                                 id: '', 
                                 nom: '', 
                                 video: []
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter une supertactique</Button>
                         </Box>
                     </Grid>
                     <Grid item xs={8}>
@@ -549,7 +549,7 @@ export function EquipeEdit() {
                                 notes_supertechniques: '', 
                                 obtention_supertechniques: '', 
                                 video: []
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter une supertechnique</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -579,7 +579,7 @@ export function EquipeEdit() {
                                 notes: '', 
                                 compo_equipe_1: '', 
                                 compo_equipe_2: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un match</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -608,7 +608,7 @@ export function EquipeEdit() {
                                  nom_original_personnage: '', 
                                  note: '',
                                  position_personnage: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un entraineur</Button>
                         </Box>
                     </Grid>
                 </Grid>

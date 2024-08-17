@@ -24,6 +24,11 @@ export function MenuEquipe() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
+      <ListItem>
+          <Link to={'/'}>
+            <Button color="inherit">Home</Button>
+          </Link>
+        </ListItem>
         <ListItem>
           <Link to={'/equipes/createEquipe'}>
             <Button color="inherit">Créer une équipe</Button>

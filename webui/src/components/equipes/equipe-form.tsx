@@ -179,7 +179,7 @@ export function EquipeFormulaire() {
                 if (matchsResponse.data && Array.isArray(matchsResponse.data)) {
                     const newMatch = matchsResponse.data.map((match) => ({
                         id: match.id,
-                        equipes: `${match.id_equipe_1.nom_francais_equipe} vs ${match.id_equipe_.nom_francais_equipe}`
+                        equipes: `${match.id_equipe_1.nom_francais_equipe} vs ${match.id_equipe_2.nom_francais_equipe}`
                     }));
                     setMatchsOptions(newMatch);
                 } else {
@@ -362,7 +362,7 @@ export function EquipeFormulaire() {
                                 nom_original_personnage: '', 
                                 note: '', 
                                 position_personnage: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un joueur</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -391,7 +391,7 @@ export function EquipeFormulaire() {
                                 nom_original_personnage: '', 
                                 note: '', 
                                 position_personnage: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un manageur</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -418,7 +418,7 @@ export function EquipeFormulaire() {
                                 id: '', 
                                 nom: '', 
                                 video: []
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter une supertactique</Button>
                         </Box>
                     </Grid>
                     <Grid item xs={8}>
@@ -526,7 +526,7 @@ export function EquipeFormulaire() {
                                 notes_supertechniques: '', 
                                 obtention_supertechniques: '', 
                                 video: []
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter une supertechnique</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -556,7 +556,7 @@ export function EquipeFormulaire() {
                                 notes: '', 
                                 compo_equipe_1: '', 
                                 compo_equipe_2: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un match</Button>
                         </Box>
                         <Box>
                             <Typography variant="h4" gutterBottom>
@@ -585,7 +585,7 @@ export function EquipeFormulaire() {
                                  nom_original_personnage: '', 
                                  note: '',
                                  position_personnage: ''
-                            })} sx={{ marginBottom: "10px" }}>Ajouter un capitaine</Button>
+                            })} sx={{ marginBottom: "10px" }}>Ajouter un entraineur</Button>
                         </Box>
                     </Grid>
                 </Grid>
