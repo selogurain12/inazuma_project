@@ -37,6 +37,14 @@ export class EquipesService {
     });
   }
 
+  async findOne(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
   async findOneMembers(id: string) {
     return await this.equipeRepository.findOne({
       where: {

@@ -25,6 +25,11 @@ export class EquipesController {
     return this.equipesService.findAll();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.equipesService.findOne(id);
+  }
+
   @Get(':id/episodes')
   findOneEpisode(@Param('id') id: string) {
     return this.equipesService.findOneEpisode(id);
