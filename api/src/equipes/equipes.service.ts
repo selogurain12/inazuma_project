@@ -42,6 +42,10 @@ export class EquipesService {
       where: {
         id,
       },
+      relations: [
+        'serie',
+        'matchs'
+      ],
     });
   }
 
