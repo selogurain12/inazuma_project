@@ -32,10 +32,8 @@ export class EquipesService {
         id,
       },
       relations: [
-        'serie',
         'episodes',
         'capitaines',
-        'matchs',
         'supertactiques',
         'supertechniques',
         'images',
