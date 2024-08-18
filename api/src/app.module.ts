@@ -43,7 +43,7 @@ import { ImagesModule } from './images/images.module';
         synchronize: true,
       }),
       inject: [ConfigService],
-    }),
+    }),    
     EpisodesModule,
     EquipesModule,
     MatchsModule,
