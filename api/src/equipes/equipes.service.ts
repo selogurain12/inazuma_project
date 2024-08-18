@@ -26,20 +26,58 @@ export class EquipesService {
     });
   }
 
-  async findOne(id: string) {
+  async findOneEpisode(id: string) {
     return await this.equipeRepository.findOne({
       where: {
         id,
       },
       relations: [
         'episodes',
+      ],
+    });
+  }
+
+  async findOneMembers(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
         'capitaines',
-        'supertactiques',
-        'supertechniques',
-        'images',
         'joueurs',
         'manageurs',
         'entraineur',
+      ],
+    });
+  }
+
+  async findOneSupertechniques(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
+        'supertechniques',
+      ],
+    });
+  }
+  async findOneSupertactiques(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
+        'supertactiques',
+      ],
+    });
+  }
+  async findOneImages(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
+        'images',
       ],
     });
   }

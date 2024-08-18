@@ -25,9 +25,29 @@ export class EquipesController {
     return this.equipesService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.equipesService.findOne(id);
+  @Get(':id/episodes')
+  findOneEpisode(@Param('id') id: string) {
+    return this.equipesService.findOneEpisode(id);
+  }
+
+  @Get(':id/members')
+  findOneMembers(@Param('id') id: string) {
+    return this.equipesService.findOneMembers(id);
+  }
+
+  @Get(':id/supertechniques')
+  findOneSupertechniques(@Param('id') id: string) {
+    return this.equipesService.findOneSupertechniques(id);
+  }
+
+  @Get(':id/supertactiques')
+  findOneSupertactiques(@Param('id') id: string) {
+    return this.equipesService.findOneSupertactiques(id);
+  }
+
+  @Get(':id/images')
+  findOneImages(@Param('id') id: string) {
+    return this.equipesService.findOneImages(id);
   }
 
   @Patch(':id')
