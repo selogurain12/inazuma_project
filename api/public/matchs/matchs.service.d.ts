@@ -2,7 +2,7 @@ import { CreateMatchDto } from './dto/create-match.dto';
 import { UpdateMatchDto } from './dto/update-match.dto';
 import { Match } from './entities/match.entity';
 import { Repository } from 'typeorm';
-import { Equipe } from 'src/equipes/entities/equipe.entity';
+import { Equipe } from '../equipes/entities/equipe.entity';
 export declare class MatchsService {
     private readonly matchRepository;
     private readonly equipeRepository;

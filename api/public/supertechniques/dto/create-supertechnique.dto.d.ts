@@ -1,7 +1,7 @@
-import { Episode } from 'src/episodes/entities/episode.entity';
-import { Equipe } from 'src/equipes/entities/equipe.entity';
-import { Match } from 'src/matchs/entities/match.entity';
-import { Personnage } from 'src/personnages/entities/personnage.entity';
+import { Episode } from '../../episodes/entities/episode.entity';
+import { Equipe } from '../../equipes/entities/equipe.entity';
+import { Match } from '../../matchs/entities/match.entity';
+import { Personnage } from '../../personnages/entities/personnage.entity';
 export declare class CreateSupertechniqueDto {
     nom_français_supertechniques: string;
     nom_original_supertechniques: string;

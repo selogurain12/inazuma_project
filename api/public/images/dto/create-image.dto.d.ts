@@ -1,5 +1,5 @@
-import { Equipe } from 'src/equipes/entities/equipe.entity';
-import { Personnage } from 'src/personnages/entities/personnage.entity';
+import { Equipe } from '../../equipes/entities/equipe.entity';
+import { Personnage } from '../../personnages/entities/personnage.entity';
 export declare class CreateImageDto {
     note: string;
     serieId: string;

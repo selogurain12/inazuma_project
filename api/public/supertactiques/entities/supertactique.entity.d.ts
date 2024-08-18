@@ -1,7 +1,7 @@
-import { Episode } from 'src/episodes/entities/episode.entity';
-import { Equipe } from 'src/equipes/entities/equipe.entity';
-import { Match } from 'src/matchs/entities/match.entity';
-import { Serie } from 'src/series/entities/series.entity';
+import { Episode } from '../../episodes/entities/episode.entity';
+import { Equipe } from '../../equipes/entities/equipe.entity';
+import { Match } from '../../matchs/entities/match.entity';
+import { Serie } from '../../series/entities/series.entity';
 export declare class Supertactique {
     id: string;
     nom: string;

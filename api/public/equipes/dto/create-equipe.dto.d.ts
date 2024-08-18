@@ -1,10 +1,10 @@
-import { Episode } from 'src/episodes/entities/episode.entity';
-import { Match } from 'src/matchs/entities/match.entity';
-import { Personnage } from 'src/personnages/entities/personnage.entity';
-import { Supertactique } from 'src/supertactiques/entities/supertactique.entity';
-import { Supertechnique } from 'src/supertechniques/entities/supertechnique.entity';
-import { Image } from 'src/images/entities/image.entity';
-import { Serie } from 'src/series/entities/series.entity';
+import { Episode } from '../../episodes/entities/episode.entity';
+import { Match } from '../../matchs/entities/match.entity';
+import { Personnage } from '../../personnages/entities/personnage.entity';
+import { Supertactique } from '../../supertactiques/entities/supertactique.entity';
+import { Supertechnique } from '../../supertechniques/entities/supertechnique.entity';
+import { Image } from '../../images/entities/image.entity';
+import { Serie } from '../../series/entities/series.entity';
 export declare class CreateEquipeDto {
     nom_francais_equipe: string;
     nom_original_equipe: string;

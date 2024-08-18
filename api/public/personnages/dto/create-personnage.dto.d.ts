@@ -1,8 +1,8 @@
-import { Episode } from 'src/episodes/entities/episode.entity';
-import { Equipe } from 'src/equipes/entities/equipe.entity';
-import { Supertechnique } from 'src/supertechniques/entities/supertechnique.entity';
-import { Image } from 'src/images/entities/image.entity';
-import { Serie } from 'src/series/entities/series.entity';
+import { Episode } from '../../episodes/entities/episode.entity';
+import { Equipe } from '../../equipes/entities/equipe.entity';
+import { Supertechnique } from '../../supertechniques/entities/supertechnique.entity';
+import { Image } from '../../images/entities/image.entity';
+import { Serie } from '../../series/entities/series.entity';
 export declare class CreatePersonnageDto {
     nom_français_personnage: string;
     nom_original_personnage: string;

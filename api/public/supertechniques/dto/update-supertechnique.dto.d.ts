@@ -1,8 +1,8 @@
 import { CreateSupertechniqueDto } from './create-supertechnique.dto';
-import { Episode } from 'src/episodes/entities/episode.entity';
-import { Equipe } from 'src/equipes/entities/equipe.entity';
-import { Match } from 'src/matchs/entities/match.entity';
-import { Personnage } from 'src/personnages/entities/personnage.entity';
+import { Episode } from '../../episodes/entities/episode.entity';
+import { Equipe } from '../../equipes/entities/equipe.entity';
+import { Match } from '../../matchs/entities/match.entity';
+import { Personnage } from '../../personnages/entities/personnage.entity';
 declare const UpdateSupertechniqueDto_base: import("@nestjs/common").Type<Partial<CreateSupertechniqueDto>>;
 export declare class UpdateSupertechniqueDto extends UpdateSupertechniqueDto_base {
     nom_français_supertechniques: string;
