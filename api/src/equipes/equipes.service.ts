@@ -1,10 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEquipeDto } from './dto/create-equipe.dto';
 import { UpdateEquipeDto } from './dto/update-equipe.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Equipe } from './entities/equipe.entity';
 import { Repository } from 'typeorm';
-
+import { Injectable, NotFoundException } from '@nestjs/common';
 @Injectable()
 export class EquipesService {
   constructor(
@@ -16,24 +15,24 @@ export class EquipesService {
     const saveEquipe = await this.equipeRepository.save(newEquipe);
     return saveEquipe;
   }
-
   async findAll() {
     return await this.equipeRepository.find({
       relations: [
         'serie',
         'episodes',
-        'matchs',
-        'capitaines',
-        'joueurs',
-        'manageurs',
-        'entraineur',
-        'supertechniques',
-        'supertactiques',
-        'images',
       ],
     });
   }
-
+  async findOneEpisode(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
+        'episodes',
+      ],
+    });
+  }
   async findOne(id: string) {
     return await this.equipeRepository.findOne({
       where: {
@@ -41,20 +40,53 @@ export class EquipesService {
       },
       relations: [
         'serie',
-        'episodes',
-        'matchs',
+        'matchs'
+      ],
+    });
+  }
+  async findOneMembers(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
         'capitaines',
         'joueurs',
         'manageurs',
         'entraineur',
+      ],
+    });
+  }
+  async findOneSupertechniques(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
         'supertechniques',
+      ],
+    });
+  }
+  async findOneSupertactiques(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
         'supertactiques',
+      ],
+    });
+  }
+  async findOneImages(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
         'images',
       ],
     });
   }
-
-
   async update(id: string, updateEquipeDto: UpdateEquipeDto) {
     const equipe = await this.equipeRepository.findOne({
       where: { id },
@@ -121,7 +153,6 @@ export class EquipesService {
     }
     return this.equipeRepository.save(equipe);
   }
-
   async remove(id: string) {
     const deleteEquipe = await this.equipeRepository.findOne({
       where: {
