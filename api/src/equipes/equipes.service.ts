@@ -18,7 +18,7 @@ export class EquipesService {
   }
 
   async findAll() {
-    return await this.equipeRepository.find({
+    const equipes = await this.equipeRepository.find({
       relations: [
         'serie',
         'episodes',
@@ -32,6 +32,8 @@ export class EquipesService {
         'images',
       ],
     });
+    console.log(equipes)
+    return equipes
   }
 
   async findOne(id: string) {
