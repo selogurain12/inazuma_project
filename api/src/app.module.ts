@@ -41,6 +41,7 @@ import { ImagesModule } from './images/images.module';
           Personnage,
         ],
         synchronize: true,
+        logging: true
       }),
       inject: [ConfigService],
     }),    
