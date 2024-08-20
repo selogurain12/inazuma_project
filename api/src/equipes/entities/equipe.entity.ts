@@ -21,18 +21,15 @@ export class Equipe {
   @ApiProperty({ description: "L'id de l'équipe", minimum: 1 })
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
   @ApiProperty({ description: "Nom français de l'équipe" })
   @Column({ nullable: false })
   @IsNotEmpty()
   @IsString()
   nom_francais_equipe: string;
-
   @ApiProperty({ description: "Nom original de l'équipe" })
   @Column({ nullable: true })
   @IsString()
   nom_original_equipe: string;
-
   @ApiProperty({ description: "Note sur l'équipe" })
   @Column({ nullable: true })
   @IsString()
@@ -40,25 +37,31 @@ export class Equipe {
 
   @ApiProperty({ description: "Capitaine de l'équipe" })
   @ManyToMany(() => Personnage)
+  @JoinTable()
   capitaines: Personnage[];
 
   @ApiProperty({ description: "Joueurs de l'équipe" })
   @ManyToMany(() => Personnage)
+  @JoinTable()
   joueurs: Personnage[];
 
   @ApiProperty({ description: "Manageur de l'équipe" })
   @ManyToMany(() => Personnage)
+  @JoinTable()
   manageurs: Personnage[];
 
   @ApiProperty({ description: "Supertactique utilisé par l'équipe" })
   @ManyToMany(() => Supertactique)
+  @JoinTable()
   supertactiques: Supertactique[];
 
   @ApiProperty({ description: "Supertechnique utilisé par l'équipe" })
   @ManyToMany(() => Supertechnique)
+  @JoinTable()
   supertechniques: Supertechnique[];
 
   @ManyToMany(() => Match)
+  @JoinTable()
   matchs: Match[];
 
   @ApiProperty({
@@ -68,11 +71,14 @@ export class Equipe {
   serie: Serie;
 
   @ManyToMany(() => Episode)
+  @JoinTable()
   episodes: Episode[];
 
   @ManyToMany(() => Personnage)
+  @JoinTable()
   entraineur: Personnage[];
 
   @ManyToMany(() => Image)
+  @JoinTable()
   images: Image[];
 }
