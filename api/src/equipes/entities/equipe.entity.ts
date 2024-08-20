@@ -43,6 +43,7 @@ export class Equipe {
   capitaines: Personnage[];
 
   @ApiProperty({ description: "Joueurs de l'équipe" })
+  @JoinTable()
   @ManyToMany(() => Personnage)
   joueurs: Personnage[];
 
