@@ -40,31 +40,25 @@ export class Equipe {
 
   @ApiProperty({ description: "Capitaine de l'équipe" })
   @ManyToMany(() => Personnage)
-  @JoinTable()
   capitaines: Personnage[];
 
   @ApiProperty({ description: "Joueurs de l'équipe" })
   @ManyToMany(() => Personnage)
-  @JoinTable()
   joueurs: Personnage[];
 
   @ApiProperty({ description: "Manageur de l'équipe" })
   @ManyToMany(() => Personnage)
-  @JoinTable()
   manageurs: Personnage[];
 
   @ApiProperty({ description: "Supertactique utilisé par l'équipe" })
   @ManyToMany(() => Supertactique)
-  @JoinTable()
   supertactiques: Supertactique[];
 
   @ApiProperty({ description: "Supertechnique utilisé par l'équipe" })
   @ManyToMany(() => Supertechnique)
-  @JoinTable()
   supertechniques: Supertechnique[];
 
   @ManyToMany(() => Match)
-  @JoinTable()
   matchs: Match[];
 
   @ApiProperty({
@@ -74,14 +68,11 @@ export class Equipe {
   serie: Serie;
 
   @ManyToMany(() => Episode)
-  @JoinTable()
   episodes: Episode[];
 
   @ManyToMany(() => Personnage)
-  @JoinTable()
   entraineur: Personnage[];
 
   @ManyToMany(() => Image)
-  @JoinTable()
   images: Image[];
 }

@@ -22,6 +22,14 @@ export class EquipesService {
       relations: [
         'serie',
         'episodes',
+        'matchs',
+        'capitaines',
+        'joueurs',
+        'manageurs',
+        'entraineur',
+        'supertechniques',
+        'supertactiques',
+        'images',
       ],
     });
   }
