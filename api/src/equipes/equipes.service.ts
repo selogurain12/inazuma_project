@@ -18,19 +18,20 @@ export class EquipesService {
   }
 
   async findAll() {
-    return this.equipeRepository
-  .createQueryBuilder('equipe')
-  .leftJoinAndSelect('equipe.serie', 'serie')
-  .leftJoinAndSelect('equipe.episodes', 'episodes')
-  .leftJoinAndSelect('equipe.capitaines', 'capitaines')
-  .leftJoinAndSelect('equipe.joueurs', 'joueurs')
-  .leftJoinAndSelect('equipe.manageurs', 'manageurs')
-  .leftJoinAndSelect('equipe.entraineur', 'entraineur')
-  .leftJoinAndSelect('equipe.supertechniques', 'supertechniques')
-  .leftJoinAndSelect('equipe.supertactiques', 'supertactiques')
-  .leftJoinAndSelect('equipe.images', 'images')
-  .getMany();
-
+    return await this.equipeRepository.find({
+      relations: [
+        'serie',
+        'episodes',
+        'matchs',
+        'capitaines',
+        'joueurs',
+        'manageurs',
+        'entraineur',
+        'supertechniques',
+        'supertactiques',
+        'images',
+      ],
+    });
   }
 
   async findOne(id: string) {
@@ -52,6 +53,7 @@ export class EquipesService {
       ],
     });
   }
+
 
   async update(id: string, updateEquipeDto: UpdateEquipeDto) {
     const equipe = await this.equipeRepository.findOne({
