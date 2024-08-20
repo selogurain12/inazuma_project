@@ -4,7 +4,6 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   ManyToMany,
-  JoinTable,
   OneToMany,
 } from 'typeorm';
 import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
@@ -111,35 +110,30 @@ export class Episode {
     description: "Equipes présentes dans l'épisode",
   })
   @ManyToMany(() => Equipe)
-  @JoinTable()
   equipes: Equipe[];
 
   @ApiProperty({
     description: "Personnages présents dans l'épisode",
   })
   @ManyToMany(() => Personnage)
-  @JoinTable()
   personnages: Personnage[];
 
   @ApiProperty({
     description: "Matchs de l'épisode",
   })
   @ManyToMany(() => Match)
-  @JoinTable()
   matchs: Match[];
 
   @ApiProperty({
     description: "Supertactiques de l'épisode",
   })
   @ManyToMany(() => Supertactique)
-  @JoinTable()
   supertactiques: Supertactique[];
 
   @ApiProperty({
     description: "Supertechniques de l'épisode",
   })
   @ManyToMany(() => Supertechnique)
-  @JoinTable()
   supertechniques: Supertechnique[];
 
   @ApiProperty({

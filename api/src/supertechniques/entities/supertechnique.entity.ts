@@ -8,7 +8,6 @@ import { Serie } from 'src/series/entities/series.entity';
 import {
   Column,
   Entity,
-  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -64,19 +63,14 @@ export class Supertechnique {
   obtention_supertechniques: string;
 
   @ManyToMany(() => Equipe)
-  @JoinTable()
   equipes: Equipe[];
 
   @ManyToMany(() => Personnage)
-  @JoinTable()
   personnages: Personnage[];
 
-  @ManyToMany(() => Episode)
-  @JoinTable()
   episodes: Episode[];
 
   @ManyToMany(() => Match)
-  @JoinTable()
   matchs: Match[];
 
   @ApiProperty({
