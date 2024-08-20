@@ -38,10 +38,6 @@ export class EquipesService {
       where: {
         id,
       },
-      relations: [
-        'serie',
-        'matchs'
-      ],
     });
   }
   async findOneMembers(id: string) {
@@ -84,6 +80,8 @@ export class EquipesService {
       },
       relations: [
         'images',
+        'serie',
+        'matchs'
       ],
     });
   }
