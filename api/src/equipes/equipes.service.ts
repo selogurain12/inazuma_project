@@ -85,6 +85,17 @@ export class EquipesService {
       ],
     });
   }
+  async findOneMatchs(id: string) {
+    return await this.equipeRepository.findOne({
+      where: {
+        id,
+      },
+      relations: [
+        'matchs',
+        'serie'
+      ],
+    });
+  }
   async update(id: string, updateEquipeDto: UpdateEquipeDto) {
     const equipe = await this.equipeRepository.findOne({
       where: { id },

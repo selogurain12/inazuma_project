@@ -43,6 +43,11 @@ export class EquipesController {
     return this.equipesService.findOneImages(id);
   }
 
+  @Get(':id/matchs')
+  findOneMatchs(@Param('id') id: string) {
+    return this.equipesService.findOneMatchs(id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
     return this.equipesService.update(id, updateEquipeDto);
