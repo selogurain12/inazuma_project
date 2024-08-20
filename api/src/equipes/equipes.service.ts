@@ -34,17 +34,6 @@ export class EquipesService {
     });
   }
 
-  async findOneEpisode(id: string) {
-    return await this.equipeRepository.findOne({
-      where: {
-        id,
-      },
-      relations: [
-        'episodes',
-      ],
-    });
-  }
-
   async findOne(id: string) {
     return await this.equipeRepository.findOne({
       where: {
@@ -52,51 +41,14 @@ export class EquipesService {
       },
       relations: [
         'serie',
-        'matchs'
-      ],
-    });
-  }
-
-  async findOneMembers(id: string) {
-    return await this.equipeRepository.findOne({
-      where: {
-        id,
-      },
-      relations: [
+        'episodes',
+        'matchs',
         'capitaines',
         'joueurs',
         'manageurs',
         'entraineur',
-      ],
-    });
-  }
-
-  async findOneSupertechniques(id: string) {
-    return await this.equipeRepository.findOne({
-      where: {
-        id,
-      },
-      relations: [
         'supertechniques',
-      ],
-    });
-  }
-  async findOneSupertactiques(id: string) {
-    return await this.equipeRepository.findOne({
-      where: {
-        id,
-      },
-      relations: [
         'supertactiques',
-      ],
-    });
-  }
-  async findOneImages(id: string) {
-    return await this.equipeRepository.findOne({
-      where: {
-        id,
-      },
-      relations: [
         'images',
       ],
     });
