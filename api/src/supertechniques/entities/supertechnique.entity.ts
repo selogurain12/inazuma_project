@@ -68,6 +68,7 @@ export class Supertechnique {
   @ManyToMany(() => Personnage)
   personnages: Personnage[];
 
+  @ManyToMany(() => Episode)
   episodes: Episode[];
 
   @ManyToMany(() => Match)
