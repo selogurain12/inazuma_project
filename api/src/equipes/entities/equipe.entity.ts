@@ -21,15 +21,18 @@ export class Equipe {
   @ApiProperty({ description: "L'id de l'équipe", minimum: 1 })
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
   @ApiProperty({ description: "Nom français de l'équipe" })
   @Column({ nullable: false })
   @IsNotEmpty()
   @IsString()
   nom_francais_equipe: string;
+
   @ApiProperty({ description: "Nom original de l'équipe" })
   @Column({ nullable: true })
   @IsString()
   nom_original_equipe: string;
+  
   @ApiProperty({ description: "Note sur l'équipe" })
   @Column({ nullable: true })
   @IsString()

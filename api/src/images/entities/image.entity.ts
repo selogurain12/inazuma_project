@@ -7,6 +7,7 @@ import { Serie } from 'src/series/entities/series.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -39,8 +40,10 @@ export class Image {
   images: string;
 
   @ManyToMany(() => Equipe)
+  @JoinTable()
   equipe: Equipe[];
 
   @ManyToMany(() => Personnage)
+  @JoinTable()
   personnages: Personnage[];
 }

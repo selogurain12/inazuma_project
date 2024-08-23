@@ -64,9 +64,11 @@ export class Supertechnique {
   obtention_supertechniques: string;
 
   @ManyToMany(() => Equipe)
+  @JoinTable()
   equipes: Equipe[];
 
   @ManyToMany(() => Personnage)
+  @JoinTable()
   personnages: Personnage[];
 
   @ManyToMany(() => Episode)
@@ -74,6 +76,7 @@ export class Supertechnique {
   episodes: Episode[];
 
   @ManyToMany(() => Match)
+  @JoinTable()
   matchs: Match[];
 
   @ApiProperty({

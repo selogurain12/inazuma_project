@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
@@ -42,18 +43,21 @@ export class Match {
   notes: string;
 
   @ManyToMany(() => Episode, (episode: Episode) => episode.matchs)
+  @JoinTable()
   episodes: Episode[];
 
   @ManyToMany(
     () => Supertechnique,
     (supertechnique: Supertechnique) => supertechnique.matchs,
   )
+  @JoinTable()
   supertechniques: Supertechnique[];
 
   @ManyToMany(
     () => Supertactique,
     (supertactique: Supertactique) => supertactique.matchs,
   )
+  @JoinTable()
   supertactiques: Supertactique[];
 
   @ApiProperty({

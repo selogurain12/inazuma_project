@@ -7,6 +7,7 @@ import { Serie } from 'src/series/entities/series.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -36,12 +37,15 @@ export class Supertactique {
   serie: Serie;
 
   @ManyToMany(() => Equipe)
+  @JoinTable()
   equipes: Equipe[];
 
   @ManyToMany(() => Match)
+  @JoinTable()
   matchs: Match[];
 
   @ManyToMany(() => Episode)
+  @JoinTable()
   episodes: Episode[];
 
   @Column('text', { array: true, nullable: true })

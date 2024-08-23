@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { IsString, IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
@@ -55,12 +56,15 @@ export class Personnage {
     description: 'Supertechniques de personnage',
   })
   @ManyToMany(() => Supertechnique)
+  @JoinTable()
   supertechniques: Supertechnique[];
 
   @ManyToMany(() => Episode)
+  @JoinTable()
   episode: Episode[];
 
   @ManyToMany(() => Equipe)
+  @JoinTable()
   equipes: Equipe[];
 
   @ApiProperty({
@@ -70,5 +74,6 @@ export class Personnage {
   serie: Serie;
 
   @ManyToMany(() => Image)
+  @JoinTable()
   images: Image[];
 }
