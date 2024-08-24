@@ -1,11 +1,10 @@
-import axios from "axios";
-import { Equipe } from "./equipedata";
 import { Fragment, useEffect, useState } from "react";
+import axios from "axios";
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Equipe } from "./equipedata";
+import { MenuEquipe } from "./menu-equipes";
 
 export function EquipeDetails() {
     const { id } = useParams<{ id: string }>();
@@ -20,8 +19,31 @@ export function EquipeDetails() {
                     return;
                 }
 
-                const response = await axios.get(`${apiUrl}/equipes/${id}`);
-                setEquipe(response.data);
+                const [episodeResponse, equipeResponse, membresResponse, supertechniquesResponse, supertactiquesResponse, imagesResponse, matchsResponse] = await Promise.all([
+                    axios.get(`${apiUrl}/equipes/${id}/episodes`),
+                    axios.get(`${apiUrl}/equipes/${id}`),
+                    axios.get(`${apiUrl}/equipes/${id}/members`),
+                    axios.get(`${apiUrl}/equipes/${id}/supertechniques`),
+                    axios.get(`${apiUrl}/equipes/${id}/supertactiques`),
+                    axios.get(`${apiUrl}/equipes/${id}/images`),
+                    axios.get(`${apiUrl}/equipes/${id}/matchs`)
+                ]);
+                setEquipe({
+                    id: equipeResponse.data.id,
+                    nom_francais_equipe: equipeResponse.data.nom_francais_equipe,
+                    nom_original_equipe: equipeResponse.data.nom_original_equipe,
+                    note: equipeResponse.data.note,
+                    capitaines: membresResponse.data.capitaines,
+                    joueurs: membresResponse.data.joueurs,
+                    manageurs: membresResponse.data.manageurs,
+                    supertactiques: supertactiquesResponse.data.supertactiques,
+                    supertechniques: supertechniquesResponse.data.supertechniques,
+                    matchs: matchsResponse.data.matchs,
+                    serie: matchsResponse.data.serie,
+                    episodes: episodeResponse.data.episodes,
+                    entraineur: membresResponse.data.entraineur,
+                    images: imagesResponse.data.images
+                });
             } catch (error) {
                 console.error('Error fetching equipe:', error);
             }
@@ -38,6 +60,7 @@ export function EquipeDetails() {
 
     return (
         <>
+        <MenuEquipe/>
             <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <Typography variant="h3" gutterBottom>
                     {equipe?.nom_francais_equipe || "Nom inconnu"}
@@ -46,8 +69,8 @@ export function EquipeDetails() {
             <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Box sx={{ width: "80%", display: "flex", flexDirection: "column", backgroundColor: "white", p: 2, borderRadius: 1, boxShadow: 1 }}>
                     <Box sx={{display: "flex", justifyContent: "end"}}>
-                    <Link to={`/equipes/editEquipes/${id}`}>
-                        <ModeEditIcon sx={{color: "black"}} />
+                        <Link to={`/equipes/editEquipes/${id}`}>
+                            <ModeEditIcon sx={{color: "black"}} />
                         </Link>
                     </Box>
                     <Typography sx={{ padding: "5px", color: "black", position: "absolute" }}>
@@ -64,28 +87,28 @@ export function EquipeDetails() {
                             equipe.supertechniques.map((supertechnique, index) => (
                                 <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                                     <Card sx={{ maxWidth: 345, mb: 2, height: 500 }}>
-                                            {supertechnique.video && supertechnique.video.length > 0 ? (
-                                                supertechnique.video.map((video, vidIndex) => (
-                                                    <div key={vidIndex}>
-                                                        <iframe
-                                                            width="100%"
-                                                            height="auto"
-                                                            src={`https://www.youtube.com/embed/${video}`}
-                                                            title="YouTube video player"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                            allowFullScreen
-                                                        ></iframe>
-                                                    </div>
-                                                ))
-                                            ) : (
-                                                <div>
-                                                    <img
-                                                        src="https://static.vecteezy.com/ti/vecteur-libre/p2/8127014-pas-d-enregistrement-de-camera-video-silhouette-noire-interdiction-icone-interdit-zone-de-production-de-films-film-rouge-symbole-d-arret-camescope-pas-de-zone-d-enregistrement-autorisee-interdit-pictogramme-isole-illustrationle-vectoriel.jpg"
-                                                        alt="Pas de vidéo disponible"
-                                                        style={{ width: "100%", height: "auto" }}
-                                                    />
+                                        {supertechnique.video && supertechnique.video.length > 0 ? (
+                                            supertechnique.video.map((video, vidIndex) => (
+                                                <div key={vidIndex}>
+                                                    <iframe
+                                                        width="100%"
+                                                        height="auto"
+                                                        src={`https://www.youtube.com/embed/${video}`}
+                                                        title="YouTube video player"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowFullScreen
+                                                    ></iframe>
                                                 </div>
-                                            )}
+                                            ))
+                                        ) : (
+                                            <div>
+                                                <img
+                                                    src="https://static.vecteezy.com/ti/vecteur-libre/p2/8127014-pas-d-enregistrement-de-camera-video-silhouette-noire-interdiction-icone-interdit-zone-de-production-de-films-film-rouge-symbole-d-arret-camescope-pas-de-zone-d-enregistrement-autorisee-interdit-pictogramme-isole-illustrationle-vectoriel.jpg"
+                                                    alt="Pas de vidéo disponible"
+                                                    style={{ width: "100%", height: "auto" }}
+                                                />
+                                            </div>
+                                        )}
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="div">
                                                 {supertechnique.nom_français_supertechniques || "Supertechnique inconnue"}
