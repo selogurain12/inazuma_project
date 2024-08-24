@@ -182,30 +182,59 @@ export function EquipeEdit() {
                 if (matchsResponse.data && Array.isArray(matchsResponse.data)) {
                     const newMatch = matchsResponse.data.map((match) => ({
                         id: match.id,
-                        equipes: `${match.id_equipe_1.nom_francais_equipe} vs ${match.id_equipe_.nom_francais_equipe}`
+                        equipes: `${match.id_equipe_1.nom_francais_equipe} vs ${match.id_equipe_2.nom_francais_equipe}`
                     }));
                     setMatchsOptions(newMatch);
                 } else {
                     alert("No supertactiques or incorrect data structure");
                 }
 
-                const equipeResponse = await axios.get(`${apiUrl}/equipes/${id}`);
-                setEquipe(equipeResponse.data);
+                const [episodeResponse, 
+                    equipeResponse, 
+                    membresResponse, 
+                    supertechniquesEquipeResponse, 
+                    supertactiquesEquipeResponse, 
+                    imagesEquipeResponse, 
+                    matchsEquipeResponse] = await Promise.all([
+                    axios.get(`${apiUrl}/equipes/${id}/episodes`),
+                    axios.get(`${apiUrl}/equipes/${id}`),
+                    axios.get(`${apiUrl}/equipes/${id}/members`),
+                    axios.get(`${apiUrl}/equipes/${id}/supertechniques`),
+                    axios.get(`${apiUrl}/equipes/${id}/supertactiques`),
+                    axios.get(`${apiUrl}/equipes/${id}/images`),
+                    axios.get(`${apiUrl}/equipes/${id}/matchs`)
+                ]);
+                setEquipe({
+                    id: equipeResponse.data.id,
+                    nom_francais_equipe: equipeResponse.data.nom_francais_equipe,
+                    nom_original_equipe: equipeResponse.data.nom_original_equipe,
+                    note: equipeResponse.data.note,
+                    capitaines: membresResponse.data.capitaines,
+                    joueurs: membresResponse.data.joueurs,
+                    manageurs: membresResponse.data.manageurs,
+                    supertactiques: supertactiquesEquipeResponse.data.supertactiques,
+                    supertechniques: supertechniquesEquipeResponse.data.supertechniques,
+                    matchs: matchsEquipeResponse.data.matchs,
+                    serie: matchsEquipeResponse.data.serie,
+                    episodes: episodeResponse.data.episodes,
+                    entraineur: membresResponse.data.entraineur,
+                    images: imagesEquipeResponse.data.images
+                });
                 if (equipeResponse.data) {
                     reset({
-                        nom_francais_equipe: equipeResponse.data.nom_français_personnage || "",
+                        nom_francais_equipe: equipeResponse.data.nom_francais_equipe || "",
                         nom_original_equipe: equipeResponse.data.nom_original_equipe || "",
                         note: equipeResponse.data.note || "",
-                        capitaines: equipeResponse.data.capitaines || [],
-                        joueurs: equipeResponse.data.joueurs || [],
-                        manageurs: equipeResponse.data.manageurs || [],
-                        supertechniques: equipeResponse.data.supertechniques || [],
-                        supertactiques: equipeResponse.data.supertactiques || [],
-                        matchs: equipeResponse.data.matchs || [],
-                        episodes: equipeResponse.data.episodes || [],
-                        serie: equipeResponse.data.serie || null,
-                        images: equipeResponse.data.images || [],
-                        entraineur: equipeResponse.data.entraineur || [],
+                        capitaines: membresResponse.data.capitaines || [],
+                        joueurs: membresResponse.data.joueurs || [],
+                        manageurs: membresResponse.data.manageurs || [],
+                        supertechniques: supertechniquesEquipeResponse.data.supertechniques || [],
+                        supertactiques: supertactiquesEquipeResponse.data.supertactiques || [],
+                        matchs: matchsEquipeResponse.data.matchs || [],
+                        episodes: episodeResponse.data.episodes || [],
+                        serie: matchsEquipeResponse.data.serie || null,
+                        images: imagesEquipeResponse.data.images || [],
+                        entraineur: membresResponse.data.entraineur || [],
                     });
                 }
             } catch (error) {
@@ -255,16 +284,28 @@ export function EquipeEdit() {
             await axios.patch(`${apiUrl}/equipes/${id}`, {
                 nom_francais_equipe: data.nom_francais_equipe,
                 nom_original_equipe: data.nom_original_equipe,
-                note: data.note,
+                note: data.note
+            });
+            await axios.patch(`${apiUrl}/equipes/${id}/episodes`, {
+                episodes: data.episodes
+            });
+            await axios.patch(`${apiUrl}/equipes/${id}/members`, {
                 capitaines: data.capitaines,
                 joueurs: data.joueurs,
                 manageurs: data.manageurs,
-                supertactiques: data.supertactiques,
-                supertechniques: data.supertechniques,
+                entraineur: data.entraineur
+            });
+            await axios.patch(`${apiUrl}/equipes/${id}/matchserie`, {
                 matchs: data.matchs,
                 serie: data.serie,
-                episodes: data.episodes,
-                entraineur: data.entraineur,
+            });
+            await axios.patch(`${apiUrl}/equipes/${id}/supertechniques`, {
+                supertechniques: data.supertechniques
+            });
+            await axios.patch(`${apiUrl}/equipes/${id}/supertactiques`, {
+                supertactiques: data.supertactiques
+            });
+            await axios.patch(`${apiUrl}/equipes/${id}/images`, {
                 images: data.images
             });
         } catch (error) {
