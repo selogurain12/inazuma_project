@@ -4,6 +4,7 @@ import { Box, ImageListItem, ImageListItemBar, Typography, Grid } from "@mui/mat
 import Slider from "react-slick";
 import { Personnage } from "./personnagedata";
 import { Link } from "react-router-dom";
+import { MenuPersonnage } from "./menu-personnages";
 
 export function AllPersonnages() {
     const [personnages, setPersonnages] = useState<Personnage[]>([]);
@@ -53,7 +54,9 @@ export function AllPersonnages() {
     };
 
     return (
-        <><Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <>
+        <MenuPersonnage />
+        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Typography variant="h3" gutterBottom>
                 TOUS LES PERSONNAGES
             </Typography>
