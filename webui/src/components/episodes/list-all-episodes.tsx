@@ -4,6 +4,7 @@ import { Box, ImageListItem, ImageListItemBar, Typography, Grid } from "@mui/mat
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { Episode } from "./episodedata";
+import { MenuEpisode } from "./menu-episodes";
 
 export function AllEpisodes() {
     const [episodes, setEpisodes] = useState<Episode[]>([]);
@@ -62,7 +63,9 @@ export function AllEpisodes() {
     };
 
     return (
-        <><Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <>
+        <MenuEpisode />
+        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Typography variant="h3" gutterBottom>
                 TOUTES LES EQUIPES
             </Typography>
