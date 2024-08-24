@@ -100,16 +100,7 @@ export class EquipesService {
     const equipe = await this.equipeRepository.findOne({
       where: { id },
       relations: [
-        'serie',
-        'episodes',
-        'capitaines',
-        'matchs',
-        'supertactiques',
-        'supertechniques',
         'images',
-        'joueurs',
-        'manageurs',
-        'entraineur',
       ],
     });
     if (!equipe) {
@@ -124,43 +115,119 @@ export class EquipesService {
     if (updateEquipeDto.note) {
       equipe.note = updateEquipeDto.note;
     }
-    if (updateEquipeDto.capitaines) {
-      equipe.capitaines = [...equipe.capitaines, ...updateEquipeDto.capitaines];
-    }
-    if (updateEquipeDto.joueurs) {
-      equipe.joueurs = [...equipe.joueurs, ...updateEquipeDto.joueurs];
-    }
-    if (updateEquipeDto.manageurs) {
-      equipe.manageurs = [...equipe.manageurs, ...updateEquipeDto.manageurs];
-    }
-    if (updateEquipeDto.supertactiques) {
-      equipe.supertactiques = [
-        ...equipe.supertactiques,
-        ...updateEquipeDto.supertactiques,
-      ];
-    }
-    if (updateEquipeDto.supertechniques) {
-      equipe.supertechniques = [
-        ...equipe.supertechniques,
-        ...updateEquipeDto.supertechniques,
-      ];
-    }
-    if (updateEquipeDto.matchs) {
-      equipe.matchs = [...equipe.matchs, ...updateEquipeDto.matchs];
-    }
-    if (updateEquipeDto.serieId) {
-      equipe.serie.id = updateEquipeDto.serieId;
-    }
-    if (updateEquipeDto.episodes) {
-      equipe.episodes = [...equipe.episodes, ...updateEquipeDto.episodes];
-    }
-    if (updateEquipeDto.entraineur) {
-      equipe.entraineur = [...equipe.entraineur, ...updateEquipeDto.entraineur];
-    }
     if (updateEquipeDto.images) {
       equipe.images = [...equipe.images, ...updateEquipeDto.images];
     }
     return this.equipeRepository.save(equipe);
+  }
+  async updateEpisodes(id: string, updateEquipeDto: UpdateEquipeDto) {
+    const equipeEpisode = await this.equipeRepository.findOne({
+      where: { id },
+      relations: [
+        'episodes',
+      ],
+    });
+    if (!equipeEpisode) {
+      throw new NotFoundException(`Equipe with ID ${id} not found`);
+    }
+    if (updateEquipeDto.episodes) {
+      equipeEpisode.episodes = [...equipeEpisode.episodes, ...updateEquipeDto.episodes];
+    }
+    return this.equipeRepository.save(equipeEpisode);
+  }
+  async updateMembers(id: string, updateEquipeDto: UpdateEquipeDto) {
+    const equipeMembers = await this.equipeRepository.findOne({
+      where: { id },
+      relations: [
+        'capitaines',
+        'joueurs',
+        'manageurs',
+        'entraineur',
+      ],
+    });
+    if (!equipeMembers) {
+      throw new NotFoundException(`Equipe with ID ${id} not found`);
+    }
+    if (updateEquipeDto.entraineur) {
+      equipeMembers.entraineur = [...equipeMembers.entraineur, ...updateEquipeDto.entraineur];
+    }
+    if (updateEquipeDto.capitaines) {
+      equipeMembers.capitaines = [...equipeMembers.capitaines, ...updateEquipeDto.capitaines];
+    }
+    if (updateEquipeDto.joueurs) {
+      equipeMembers.joueurs = [...equipeMembers.joueurs, ...updateEquipeDto.joueurs];
+    }
+    if (updateEquipeDto.manageurs) {
+      equipeMembers.manageurs = [...equipeMembers.manageurs, ...updateEquipeDto.manageurs];
+    }
+    return this.equipeRepository.save(equipeMembers);
+  }
+  async updateMatchSerie(id: string, updateEquipeDto: UpdateEquipeDto) {
+    const equipeMatchSerie = await this.equipeRepository.findOne({
+      where: { id },
+      relations: [
+        'serie',
+        'matchs',
+      ],
+    });
+    if (!equipeMatchSerie) {
+      throw new NotFoundException(`Equipe with ID ${id} not found`);
+    }
+    if (updateEquipeDto.matchs) {
+      equipeMatchSerie.matchs = [...equipeMatchSerie.matchs, ...updateEquipeDto.matchs];
+    }
+    return this.equipeRepository.save(equipeMatchSerie);
+  }
+  async updateSupertechniques(id: string, updateEquipeDto: UpdateEquipeDto) {
+    const equipeSupertechniques = await this.equipeRepository.findOne({
+      where: { id },
+      relations: [
+        'supertechniques',
+      ],
+    });
+    if (!equipeSupertechniques) {
+      throw new NotFoundException(`Equipe with ID ${id} not found`);
+    }
+    if (updateEquipeDto.supertechniques) {
+      equipeSupertechniques.supertechniques = [
+        ...equipeSupertechniques.supertechniques,
+        ...updateEquipeDto.supertechniques,
+      ];
+    }
+    return this.equipeRepository.save(equipeSupertechniques);
+  }
+  async updateSupertactique(id: string, updateEquipeDto: UpdateEquipeDto) {
+    const equipeSupertactiques = await this.equipeRepository.findOne({
+      where: { id },
+      relations: [
+        'supertactiques',
+      ],
+    });
+    if (!equipeSupertactiques) {
+      throw new NotFoundException(`Equipe with ID ${id} not found`);
+    }
+    if (updateEquipeDto.supertactiques) {
+      equipeSupertactiques.supertactiques = [
+        ...equipeSupertactiques.supertactiques,
+        ...updateEquipeDto.supertactiques,
+      ];
+    }
+    return this.equipeRepository.save(equipeSupertactiques);
+  }
+  async updateImages(id: string, updateEquipeDto: UpdateEquipeDto) {
+    const equipeImages = await this.equipeRepository.findOne({
+      where: { id },
+      relations: [
+        'images',
+      ],
+    });
+    if (!equipeImages) {
+      throw new NotFoundException(`Equipe with ID ${id} not found`);
+    }
+    if (updateEquipeDto.images) {
+      equipeImages.images = [...equipeImages.images, ...updateEquipeDto.images];
+    }
+    return this.equipeRepository.save(equipeImages);
   }
   async remove(id: string) {
     const deleteEquipe = await this.equipeRepository.findOne({

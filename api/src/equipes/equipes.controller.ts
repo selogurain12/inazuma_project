@@ -52,6 +52,37 @@ export class EquipesController {
   update(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
     return this.equipesService.update(id, updateEquipeDto);
   }
+
+  @Patch(':id/episodes')
+  updateEpisodes(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
+    return this.equipesService.updateEpisodes(id, updateEquipeDto);
+  }
+
+  @Patch(':id/members')
+  updateMembers(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
+    return this.equipesService.updateMembers(id, updateEquipeDto);
+  }
+
+  @Patch(':id/matchserie')
+  updateMatchSerie(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
+    return this.equipesService.updateMatchSerie(id, updateEquipeDto);
+  }
+
+  @Patch(':id/supertechniques')
+  updateSupertechniques(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
+    return this.equipesService.updateSupertechniques(id, updateEquipeDto);
+  }
+
+  @Patch(':id/supertactiques')
+  updateSupertactique(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
+    return this.equipesService.updateSupertactique(id, updateEquipeDto);
+  }
+
+  @Patch(':id/images')
+  updateImages(@Param('id') id: string, @Body() updateEquipeDto: UpdateEquipeDto) {
+    return this.equipesService.updateImages(id, updateEquipeDto);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.equipesService.remove(id);
