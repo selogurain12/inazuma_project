@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { MenuEpisode } from "./menu-episodes";
 
 export function EpisodeDetails() {
     const { id } = useParams<{ id: string }>();
@@ -38,6 +39,7 @@ export function EpisodeDetails() {
 
     return (
         <>
+        <MenuEpisode />
             <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <Typography variant="h3" gutterBottom>
                     {episode?.titre || "Nom inconnu"}
